@@ -3,6 +3,7 @@ import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../views/HomeScreen';
+import DetailScreen from '../views/DetailScreen';
 
 const Routes = () => {
   const RootStack = createNativeStackNavigator({
@@ -10,6 +11,10 @@ const Routes = () => {
     screenOptions: { headerShown: false },
     screens: {
       Home: HomeScreen,
+      Detail: {
+        screen: DetailScreen,
+        options: { headerShown: true, title: 'Detalles' },
+      },
     },
   });
 
