@@ -4,15 +4,18 @@
  *
  * @format
  */
-
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Routes from './src/routers';
 
 function App() {
   return (
-    <SafeAreaProvider>
-      <Routes />
-    </SafeAreaProvider>
+    <GluestackUIProvider config={config} >
+      <SafeAreaProvider>
+        <Routes />
+      </SafeAreaProvider>
+    </GluestackUIProvider>
   );
 }
 
