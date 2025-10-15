@@ -20,7 +20,7 @@ const Routes = () => {
           headerShown: true,
           title: 'Detalles',
           headerStyle: {
-            backgroundColor: isDarkMode ? '#1E1E1E' : '#fff',
+            backgroundColor: isDarkMode ? '#171717' : '#fff',
           },
           headerTintColor: isDarkMode ? '#fff' : '#000',
           headerTitleStyle: {
