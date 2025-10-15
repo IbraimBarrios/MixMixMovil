@@ -7,8 +7,10 @@ import {
   Text,
 } from '@gluestack-ui/themed';
 import { StatusBar, useColorScheme } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
@@ -20,7 +22,7 @@ const HomeScreen = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Box
         flex={1}
-        padding="$2"
+        padding="$3"
         backgroundColor="$amber400"
         sx={{
           _dark: { backgroundColor: '$backgroundDark950' },
@@ -35,7 +37,7 @@ const HomeScreen = () => {
         >
           ¡MixMix funcionando! 🍹
         </Text>
-        <Button>
+        <Button onPress={() => navigation.navigate('Detail')}>
           <ButtonText>Botón de prueba</ButtonText>
         </Button>
       </Box>
