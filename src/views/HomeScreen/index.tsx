@@ -6,8 +6,9 @@ import {
   SafeAreaView,
   Text,
 } from '@gluestack-ui/themed';
-import { StatusBar, useColorScheme } from 'react-native';
+import { Image, StatusBar, useColorScheme } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import DrinkImage from '../../components/DrinkImage';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -28,6 +29,7 @@ const HomeScreen = () => {
           _dark: { backgroundColor: '$backgroundDark950' },
         }}
       >
+        <DrinkImage />
         <Text
           size="2xl"
           bold
