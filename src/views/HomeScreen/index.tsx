@@ -3,10 +3,12 @@ import {
   Box,
   Button,
   ButtonText,
+  HStack,
   SafeAreaView,
   Text,
+  VStack,
 } from '@gluestack-ui/themed';
-import { Image, StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DrinkImage from '../../components/DrinkImage';
 
@@ -30,18 +32,26 @@ const HomeScreen = () => {
         }}
       >
         <DrinkImage />
-        <Text
-          size="2xl"
-          bold
-          color="$black"
-          mb="$4"
-          sx={{ _dark: { color: '$white' } }}
-        >
-          ¡MixMix funcionando! 🍹
-        </Text>
-        <Button onPress={() => navigation.navigate('Detail')}>
-          <ButtonText>Botón de prueba</ButtonText>
-        </Button>
+        <VStack space="md" marginVertical="$4">
+          <HStack justifyContent="space-between" alignItems="center">
+            <Text size="xl" bold color="$black">
+              Mojito
+            </Text>
+            <Box padding={4} backgroundColor="#eaeaea" borderRadius={6}>
+              <Text size="sm" color="$black">
+                Cocktail
+              </Text>
+            </Box>
+          </HStack>
+          <Text>
+            Muddle mint leaves with sugar and lime juice. Add a splash of soda
+            water and fill the glass with cracked ice. Pour the rum and top with
+            soda water.
+          </Text>
+          <Button onPress={()=> navigation.navigate("Detail")}>
+            <ButtonText>Ver detalles</ButtonText>
+          </Button>
+        </VStack>
       </Box>
     </SafeAreaView>
   );
