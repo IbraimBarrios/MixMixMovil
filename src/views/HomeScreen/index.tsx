@@ -48,7 +48,7 @@ const HomeScreen = () => {
             water and fill the glass with cracked ice. Pour the rum and top with
             soda water.
           </Text>
-          <Button>
+          <Button onPress={()=> navigation.navigate("Detail")}>
             <ButtonText>Ver detalles</ButtonText>
           </Button>
         </VStack>
