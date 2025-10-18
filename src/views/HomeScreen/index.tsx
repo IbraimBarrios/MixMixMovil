@@ -6,8 +6,9 @@ import {
   HStack,
   SafeAreaView,
   Text,
+  VStack,
 } from '@gluestack-ui/themed';
-import { Image, StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DrinkImage from '../../components/DrinkImage';
 
@@ -31,12 +32,12 @@ const HomeScreen = () => {
         }}
       >
         <DrinkImage />
-        <Box>
+        <VStack space="md" marginVertical="$4">
           <HStack justifyContent="space-between" alignItems="center">
-            <Text size="lg" bold color="$black">
+            <Text size="xl" bold color="$black">
               Mojito
             </Text>
-            <Box padding={4} backgroundColor="#a6a6a6" borderRadius={6}>
+            <Box padding={4} backgroundColor="#eaeaea" borderRadius={6}>
               <Text size="sm" color="$black">
                 Cocktail
               </Text>
@@ -47,19 +48,10 @@ const HomeScreen = () => {
             water and fill the glass with cracked ice. Pour the rum and top with
             soda water.
           </Text>
-        </Box>
-        <Text
-          size="2xl"
-          bold
-          color="$black"
-          mb="$4"
-          sx={{ _dark: { color: '$white' } }}
-        >
-          ¡MixMix funcionando! 🍹
-        </Text>
-        <Button onPress={() => navigation.navigate('Detail')}>
-          <ButtonText>Botón de prueba</ButtonText>
-        </Button>
+          <Button>
+            <ButtonText>Ver detalles</ButtonText>
+          </Button>
+        </VStack>
       </Box>
     </SafeAreaView>
   );
