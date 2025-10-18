@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   ButtonText,
+  Divider,
   HStack,
   SafeAreaView,
   Text,
@@ -32,7 +33,7 @@ const HomeScreen = () => {
         }}
       >
         <DrinkImage />
-        <VStack space="md" marginVertical="$4">
+        <VStack space="md" marginTop="$4">
           <HStack justifyContent="space-between" alignItems="center">
             <Text size="xl" bold color="$black">
               Mojito
@@ -48,10 +49,11 @@ const HomeScreen = () => {
             water and fill the glass with cracked ice. Pour the rum and top with
             soda water.
           </Text>
-          <Button onPress={()=> navigation.navigate("Detail")}>
+          <Button onPress={() => navigation.navigate('Detail')}>
             <ButtonText>Ver detalles</ButtonText>
           </Button>
         </VStack>
+        <Divider my="$4" />
       </Box>
     </SafeAreaView>
   );
