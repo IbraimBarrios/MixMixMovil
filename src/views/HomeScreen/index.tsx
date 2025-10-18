@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   ButtonText,
+  HStack,
   SafeAreaView,
   Text,
 } from '@gluestack-ui/themed';
@@ -30,6 +31,23 @@ const HomeScreen = () => {
         }}
       >
         <DrinkImage />
+        <Box>
+          <HStack justifyContent="space-between" alignItems="center">
+            <Text size="lg" bold color="$black">
+              Mojito
+            </Text>
+            <Box padding={4} backgroundColor="#a6a6a6" borderRadius={6}>
+              <Text size="sm" color="$black">
+                Cocktail
+              </Text>
+            </Box>
+          </HStack>
+          <Text>
+            Muddle mint leaves with sugar and lime juice. Add a splash of soda
+            water and fill the glass with cracked ice. Pour the rum and top with
+            soda water.
+          </Text>
+        </Box>
         <Text
           size="2xl"
           bold
