@@ -12,6 +12,7 @@ import {
 import { StatusBar, useColorScheme } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DrinkImage from '../../components/DrinkImage';
+import Categories from '../../components/Categories';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -25,9 +26,7 @@ const HomeScreen = () => {
     >
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Box
-        flex={1}
         padding="$3"
-        backgroundColor="$amber400"
         sx={{
           _dark: { backgroundColor: '$backgroundDark950' },
         }}
@@ -54,6 +53,7 @@ const HomeScreen = () => {
           </Button>
         </VStack>
         <Divider my="$4" />
+        <Categories />
       </Box>
     </SafeAreaView>
   );
