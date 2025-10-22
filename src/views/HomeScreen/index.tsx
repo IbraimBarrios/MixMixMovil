@@ -13,6 +13,8 @@ import { StatusBar, useColorScheme } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DrinkImage from '../../components/DrinkImage';
 import Categories from '../../components/Categories';
+import DrinkCard from '../../components/DrinkCard';
+import CategoryTag from '../../components/CategoryTag';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -31,17 +33,14 @@ const HomeScreen = () => {
           _dark: { backgroundColor: '$backgroundDark950' },
         }}
       >
+        {/* Secction DrinkRandom */}
         <DrinkImage />
         <VStack space="md" marginTop="$4">
           <HStack justifyContent="space-between" alignItems="center">
             <Text size="xl" bold color="$black">
               Mojito
             </Text>
-            <Box padding={4} backgroundColor="#eaeaea" borderRadius={6}>
-              <Text size="sm" color="$black">
-                Cocktail
-              </Text>
-            </Box>
+            <CategoryTag />
           </HStack>
           <Text>
             Muddle mint leaves with sugar and lime juice. Add a splash of soda
@@ -53,7 +52,23 @@ const HomeScreen = () => {
           </Button>
         </VStack>
         <Divider my="$4" />
+        {/* Secction Categories */}
         <Categories />
+        {/* Secction Drinks */}
+        <VStack space="md" mt="$4">
+          <DrinkCard
+            name="Old Fashioned"
+            url="https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg"
+          />
+          <DrinkCard
+            name="Boston Sidecar"
+            url="https://www.thecocktaildb.com/images/media/drink/qzs5d11504365962.jpg"
+          />
+          <DrinkCard
+            name="Negroni"
+            url="https://www.thecocktaildb.com/images/media/drink/qgdu971561574065.jpg"
+          />
+        </VStack>
       </Box>
     </SafeAreaView>
   );
