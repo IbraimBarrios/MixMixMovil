@@ -23,12 +23,25 @@ const Categories = () => {
               key={index}
               variant={isSelected ? 'solid' : 'outline'}
               size="md"
-              borderColor={isSelected ? '$black' : '$blueGray300'}
               borderRadius="$lg"
               onPress={() => setSelectedCategory(item)}
-              sx={{ backgroundColor: isSelected ? '$black' : 'transparent' }}
+              sx={{
+                borderColor: isSelected ? '$black' : '$blueGray300',
+                backgroundColor: isSelected ? '$black' : 'transparent',
+                _dark: {
+                  borderColor: isSelected ? '$white' : '$blueGray700',
+                  backgroundColor: isSelected ? '$white' : 'transparent',
+                },
+              }}
             >
-              <ButtonText color={isSelected ? '$white' : '$black'}>
+              <ButtonText
+                color={isSelected ? '$white' : '$black'}
+                sx={{
+                  _dark: {
+                    color: isSelected ? '$black' : '$white',
+                  },
+                }}
+              >
                 {categoryName}
               </ButtonText>
             </Button>
