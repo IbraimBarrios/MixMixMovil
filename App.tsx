@@ -5,7 +5,7 @@
  * @format
  */
 import { GluestackUIProvider } from '@gluestack-ui/themed';
-import { config } from '@gluestack-ui/config';
+import { config } from './gluestack-ui.config';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Routes from './src/routers';
 import { useColorScheme } from 'react-native';
