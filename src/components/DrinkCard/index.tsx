@@ -1,4 +1,4 @@
-import { HStack, Text, VStack } from '@gluestack-ui/themed';
+import { Box, HStack, Text, VStack } from '@gluestack-ui/themed';
 import MiniatureDrinkImg from '../MiniatureDrinkImg';
 import CategoryTag from '../CategoryTag';
 import DrinkTypeLabel from '../DrinkTypeLabel';
@@ -8,16 +8,26 @@ type DrinkCardProps = {
   url: string;
 };
 
-const DrinkCard = ({name, url}: DrinkCardProps) => {
+const DrinkCard = ({ name, url }: DrinkCardProps) => {
   return (
-    <HStack space="md">
-      <MiniatureDrinkImg url={url}/>
+    <HStack
+      space="md"
+      borderTopLeftRadius="$2xl"
+      borderBottomLeftRadius="$2xl"
+      borderTopRightRadius="$lg"
+      borderBottomRightRadius="$lg"
+      bg="$warmGray100"
+      sx={{ _dark: { bg: '$warmGray800' } }}
+    >
+      <MiniatureDrinkImg url={url} />
       <VStack flex={1} space="md">
         <HStack justifyContent="space-between" alignItems="center">
           <CategoryTag />
-          <DrinkTypeLabel />
+          <Box mr="$2">
+            <DrinkTypeLabel />
+          </Box>
         </HStack>
-        <Text bold fontSize="$lg" color="$black">
+        <Text bold fontSize="$lg">
           {name}
         </Text>
       </VStack>

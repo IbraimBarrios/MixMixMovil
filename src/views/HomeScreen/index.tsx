@@ -37,7 +37,7 @@ const HomeScreen = () => {
         <DrinkImage />
         <VStack space="md" marginTop="$4">
           <HStack justifyContent="space-between" alignItems="center">
-            <Text size="xl" bold color="$black">
+            <Text size="xl" bold>
               Mojito
             </Text>
             <CategoryTag />
@@ -47,8 +47,14 @@ const HomeScreen = () => {
             water and fill the glass with cracked ice. Pour the rum and top with
             soda water.
           </Text>
-          <Button onPress={() => navigation.navigate('Detail')}>
-            <ButtonText>Ver detalles</ButtonText>
+          <Button
+            onPress={() => navigation.navigate('Detail')}
+            backgroundColor="$black"
+            sx={{ _dark: { backgroundColor: '$white' } }}
+          >
+            <ButtonText color="$white" sx={{ _dark: { color: '$black' } }}>
+              Ver detalles
+            </ButtonText>
           </Button>
         </VStack>
         <Divider my="$4" />
