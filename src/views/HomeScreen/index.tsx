@@ -37,12 +37,17 @@ const HomeScreen = () => {
         <DrinkImage />
         <VStack space="md" marginTop="$4">
           <HStack justifyContent="space-between" alignItems="center">
-            <Text size="xl" bold>
+            <Text
+              size="xl"
+              bold
+              color="$black"
+              sx={{ _dark: { color: '$white' } }}
+            >
               Mojito
             </Text>
             <CategoryTag />
           </HStack>
-          <Text>
+          <Text color="$black" sx={{ _dark: { color: '$white' } }}>
             Muddle mint leaves with sugar and lime juice. Add a splash of soda
             water and fill the glass with cracked ice. Pour the rum and top with
             soda water.
