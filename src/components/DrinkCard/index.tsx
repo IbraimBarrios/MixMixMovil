@@ -27,7 +27,12 @@ const DrinkCard = ({ name, url }: DrinkCardProps) => {
             <DrinkTypeLabel />
           </Box>
         </HStack>
-        <Text bold fontSize="$lg">
+        <Text
+          bold
+          fontSize="$lg"
+          color="$black"
+          sx={{ _dark: { color: '$white' } }}
+        >
           {name}
         </Text>
       </VStack>
