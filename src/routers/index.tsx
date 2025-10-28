@@ -5,6 +5,7 @@ import { useColorScheme } from 'react-native';
 
 import HomeScreen from '../views/HomeScreen';
 import DetailScreen from '../views/DetailScreen';
+import DrinkDetailScreen from '../views/DrinkDetailScreen';
 
 const Routes = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -14,6 +15,7 @@ const Routes = () => {
     screenOptions: { headerShown: false },
     screens: {
       Home: HomeScreen,
+      DrinkDetail: DrinkDetailScreen,
       Detail: {
         screen: DetailScreen,
         options: {
