@@ -53,7 +53,7 @@ const HomeScreen = () => {
             soda water.
           </Text>
           <Button
-            onPress={() => navigation.navigate('DrinkDetail')}
+            onPress={() => navigation.navigate('Detail')}
             backgroundColor="$black"
             sx={{ _dark: { backgroundColor: '$white' } }}
           >
