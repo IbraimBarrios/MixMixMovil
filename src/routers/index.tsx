@@ -4,9 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, useColorScheme, View } from 'react-native';
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from '../views/HomeScreen';
 import DrinkDetailScreen from '../views/DrinkDetailScreen';
+import ITabBarIcon from '../components/TabBarIcon';
 
 function FavoritesScreen() {
   return (
@@ -31,18 +31,14 @@ const Routes = () => {
         screen: HomeScreen,
         options: {
           tabBarLabel: 'Inicio',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),
+          tabBarIcon: ITabBarIcon('home'),
         },
       },
       Favorites: {
         screen: FavoritesScreen,
         options: {
           tabBarLabel: 'Favoritos',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="heart" color={color} size={size} />
-          ),
+          tabBarIcon: ITabBarIcon('heart'),
         },
       },
     },
