@@ -6,6 +6,7 @@ import { Text, useColorScheme, View } from 'react-native';
 
 import HomeScreen from '../views/HomeScreen';
 import DrinkDetailScreen from '../views/DrinkDetailScreen';
+import ITabBarIcon from '../components/TabBarIcon';
 
 function FavoritesScreen() {
   return (
@@ -30,12 +31,14 @@ const Routes = () => {
         screen: HomeScreen,
         options: {
           tabBarLabel: 'Inicio',
+          tabBarIcon: ITabBarIcon('home'),
         },
       },
       Favorites: {
         screen: FavoritesScreen,
         options: {
           tabBarLabel: 'Favoritos',
+          tabBarIcon: ITabBarIcon('heart'),
         },
       },
     },
