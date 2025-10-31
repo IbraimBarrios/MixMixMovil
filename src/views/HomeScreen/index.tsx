@@ -38,7 +38,10 @@ const HomeScreen = () => {
           }}
         >
           {/* Secction DrinkRandom */}
-          <DrinkImage />
+          <DrinkImage
+            url="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg"
+            variant="wide"
+          />
           <VStack space="md" marginTop="$4">
             <HStack justifyContent="space-between" alignItems="center">
               <Text

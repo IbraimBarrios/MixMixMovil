@@ -1,12 +1,22 @@
-import { Image, StyleSheet } from 'react-native';
+import { Image, ImageStyle, StyleSheet } from 'react-native';
 
-const DrinkImage = () => {
+type DrinkImageProps = {
+  url: string;
+  variant?: 'square' | 'wide';
+};
+
+const DrinkImage = ({ url, variant = 'square' }: DrinkImageProps) => {
+  const variantStyle: Record<typeof variant, ImageStyle> = {
+    square: { aspectRatio: 1 },
+    wide: { aspectRatio: 1.6 },
+  };
+
   return (
     <Image
       alt="drink"
-      style={styles.image}
+      style={[styles.image, variantStyle[variant]]}
       source={{
-        uri: 'https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg',
+        uri: url,
       }}
     />
   );
@@ -15,7 +25,6 @@ const DrinkImage = () => {
 const styles = StyleSheet.create({
   image: {
     width: '100%',
-    aspectRatio: 1.5,
     borderRadius: 16,
     resizeMode: 'cover',
   },
