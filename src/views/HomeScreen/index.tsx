@@ -54,7 +54,7 @@ const HomeScreen = () => {
               </Text>
               <CategoryTag />
             </HStack>
-            <Text color="$black" sx={{ _dark: { color: '$white' } }}>
+            <Text size='md' lineHeight="$md" color="$black" sx={{ _dark: { color: '$white' } }}>
               Muddle mint leaves with sugar and lime juice. Add a splash of soda
               water and fill the glass with cracked ice. Pour the rum and top
               with soda water.
