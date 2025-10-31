@@ -1,4 +1,5 @@
-import { Box, SafeAreaView, Text } from '@gluestack-ui/themed';
+import { Box, SafeAreaView } from '@gluestack-ui/themed';
+import DrinkImage from '../../components/DrinkImage';
 
 const DrinkDetailScreen = () => {
   return (
@@ -8,9 +9,7 @@ const DrinkDetailScreen = () => {
       sx={{ _dark: { backgroundColor: '$backgroundDark950' } }}
     >
       <Box padding="$3">
-        <Text color="$black" sx={{ _dark: { color: '$white' } }}>
-          Detalles del cocktail
-        </Text>
+        <DrinkImage url="https://www.thecocktaildb.com/images/media/drink/qzs5d11504365962.jpg" />
       </Box>
     </SafeAreaView>
   );
