@@ -17,7 +17,7 @@ const DrinkDetailScreen = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <CategoryTag />
+          <CategoryTag categoryName='Cocktail'/>
           <DrinkTypeLabel />
         </HStack>
         <VStack space="md">

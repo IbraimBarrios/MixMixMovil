@@ -22,7 +22,7 @@ const DrinkCard = ({ name, url }: DrinkCardProps) => {
       <MiniatureDrinkImg url={url} />
       <VStack flex={1} space="md">
         <HStack justifyContent="space-between" alignItems="center">
-          <CategoryTag />
+          <CategoryTag categoryName="Cocktail" />
           <Box mr="$2">
             <DrinkTypeLabel />
           </Box>
