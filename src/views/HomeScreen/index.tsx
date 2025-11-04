@@ -1,24 +1,16 @@
 import React from 'react';
 import {
   Box,
-  Button,
-  ButtonText,
   Divider,
-  HStack,
   SafeAreaView,
-  Text,
   VStack,
 } from '@gluestack-ui/themed';
 import { ScrollView, StatusBar, useColorScheme } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import DrinkImage from '../../components/DrinkImage';
 import Categories from '../../components/Categories';
 import DrinkCard from '../../components/DrinkCard';
-import CategoryTag from '../../components/CategoryTag';
 import DrinkRandom from '../../features/DrinkRandom';
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
