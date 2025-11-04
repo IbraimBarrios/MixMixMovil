@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import useGetData from '../../hooks/useGetData';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
+import SkeletonDrinkRandom from '../../Skeletons/SkeletonDrinkRandom';
 
 type DrinkResponse = {
   drinks: Drink[];
@@ -21,13 +22,13 @@ const DrinkRandom = () => {
 
   const drink = useMemo(() => data?.drinks[0] || null, [data]);
 
-  if (isLoading) return <Text>Cargando...</Text>;
+  if (isLoading) return <SkeletonDrinkRandom />;
   if (!drink) return <Text>No se encontro ninguna bebida</Text>;
 
   return (
-    <>
+    <VStack space="md">
       <DrinkImage url={drink.strDrinkThumb} variant="wide" />
-      <VStack space="md" marginTop="$4">
+      <VStack space="md">
         <HStack justifyContent="space-between" alignItems="center">
           <Text
             size="xl"
@@ -59,7 +60,7 @@ const DrinkRandom = () => {
           </ButtonText>
         </Button>
       </VStack>
-    </>
+    </VStack>
   );
 };
 
