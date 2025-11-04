@@ -1,6 +1,10 @@
 import { Box, Text } from '@gluestack-ui/themed';
 
-const CategoryTag = () => {
+type CategoryTagProps = {
+  categoryName: string;
+};
+
+const CategoryTag = ({ categoryName }: CategoryTagProps) => {
   return (
     <Box
       paddingVertical="$1"
@@ -9,7 +13,7 @@ const CategoryTag = () => {
       borderRadius="$md"
     >
       <Text size="xs" color="$black">
-        Cocktail
+        {categoryName}
       </Text>
     </Box>
   );
