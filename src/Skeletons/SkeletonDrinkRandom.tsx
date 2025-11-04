@@ -18,7 +18,7 @@ const SkeletonDrinkRandom = () => {
         <Box w="$full" h="$4" bg={bgColor} rounded="$sm" />
         <Box w="$5/6" h="$4" bg={bgColor} rounded="$sm" />
       </VStack>
-      <Box w="$full" h="$12" bg={bgColor} rounded="$sm" />
+      <Box w="$full" h="$10" bg={bgColor} rounded="$sm" />
     </VStack>
   );
 };
