@@ -15,6 +15,15 @@ import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
 import SkeletonDrinkRandom from '../../Skeletons/SkeletonDrinkRandom';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
+import RequestErrorMessage from '../../components/RequestErrorMessage';
+
+const renderCenteredBox = (children: React.ReactNode) => {
+  return (
+    <Box height={200} alignItems="center" justifyContent="center">
+      {children}
+    </Box>
+  );
+};
 
 type DrinkResponse = {
   drinks: Drink[];
@@ -22,7 +31,7 @@ type DrinkResponse = {
 
 const DrinkRandom = () => {
   const navigation = useNavigation();
-  const { data, isLoading, fetchData } = useGetData<DrinkResponse>();
+  const { data, error, isLoading, fetchData } = useGetData<DrinkResponse>();
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/random.php`);
@@ -31,16 +40,18 @@ const DrinkRandom = () => {
   const drink = useMemo(() => data?.drinks[0] || null, [data]);
 
   if (isLoading) return <SkeletonDrinkRandom />;
-  if (!drink)
-    return (
-      <Box
-        height={200}
-        alignItems="center"
-        justifyContent="center"
-      >
-        <EmptyResultMessage text="No se encontró ninguna bebida." />
-      </Box>
+
+  if (error) {
+    return renderCenteredBox(
+      <RequestErrorMessage text="Error de solicitud de bebida." />,
     );
+  }
+
+  if (!drink) {
+    return renderCenteredBox(
+      <EmptyResultMessage text="No se encontró ninguna bebida." />,
+    );
+  }
 
   return (
     <VStack space="md">
