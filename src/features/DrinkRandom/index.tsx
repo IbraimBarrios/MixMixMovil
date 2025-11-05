@@ -1,5 +1,12 @@
 import { useEffect, useMemo } from 'react';
-import { Button, ButtonText, HStack, Text, VStack } from '@gluestack-ui/themed';
+import {
+  Box,
+  Button,
+  ButtonText,
+  HStack,
+  Text,
+  VStack,
+} from '@gluestack-ui/themed';
 import DrinkImage from '../../components/DrinkImage';
 import CategoryTag from '../../components/CategoryTag';
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +14,7 @@ import useGetData from '../../hooks/useGetData';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
 import SkeletonDrinkRandom from '../../Skeletons/SkeletonDrinkRandom';
+import EmptyResultMessage from '../../components/EmptyResultMessage';
 
 type DrinkResponse = {
   drinks: Drink[];
@@ -23,7 +31,16 @@ const DrinkRandom = () => {
   const drink = useMemo(() => data?.drinks[0] || null, [data]);
 
   if (isLoading) return <SkeletonDrinkRandom />;
-  if (!drink) return <Text>No se encontro ninguna bebida</Text>;
+  if (!drink)
+    return (
+      <Box
+        height={200}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <EmptyResultMessage text="No se encontró ninguna bebida." />
+      </Box>
+    );
 
   return (
     <VStack space="md">
