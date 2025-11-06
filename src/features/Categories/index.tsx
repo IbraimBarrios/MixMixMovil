@@ -1,9 +1,9 @@
+import { useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Button, ButtonText, HStack } from '@gluestack-ui/themed';
-import { useEffect, useMemo, useState } from 'react';
-import useGetData from '../../hooks/useGetData';
 import { API_BASE_V1 } from '../../utils/constants';
 import type { category } from '../../types/category';
+import useGetData from '../../hooks/useGetData';
 
 type CategoryResponse = {
   drinks: category[];
