@@ -6,9 +6,9 @@ import {
   VStack,
 } from '@gluestack-ui/themed';
 import { ScrollView, StatusBar, useColorScheme } from 'react-native';
-import Categories from '../../components/Categories';
 import DrinkCard from '../../components/DrinkCard';
 import DrinkRandom from '../../features/DrinkRandom';
+import Categories from '../../features/Categories';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';

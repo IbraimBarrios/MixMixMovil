@@ -1,11 +1,23 @@
-import { Button, ButtonText, HStack } from '@gluestack-ui/themed';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import { Button, ButtonText, HStack } from '@gluestack-ui/themed';
+import { API_BASE_V1 } from '../../utils/constants';
+import type { category } from '../../types/category';
+import useGetData from '../../hooks/useGetData';
 
-const categories = ['Cocktail', 'Ordinary Drink', 'Punch', 'Beer', 'Cocoa'];
+type CategoryResponse = {
+  drinks: category[];
+};
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const { data, fetchData } = useGetData<CategoryResponse>();
+
+  useEffect(() => {
+    fetchData(`${API_BASE_V1}/list.php?c=list`);
+  }, []);
+
+  const categories = useMemo(() => data?.drinks || [], [data]);
 
   return (
     <ScrollView
@@ -14,9 +26,10 @@ const Categories = () => {
       contentContainerStyle={styles.contentContainer}
     >
       <HStack space="md">
-        {['all', ...categories].map((item, index) => {
-          const isSelected = selectedCategory === item;
-          const categoryName = item === 'all' ? 'Todos' : item;
+        {[{ strCategory: 'all' }, ...categories].map((item, index) => {
+          const isSelected = selectedCategory === item.strCategory;
+          const categoryName =
+            item.strCategory === 'all' ? 'Todos' : item.strCategory;
 
           return (
             <Button
@@ -24,7 +37,7 @@ const Categories = () => {
               variant={isSelected ? 'solid' : 'outline'}
               size="md"
               borderRadius="$lg"
-              onPress={() => setSelectedCategory(item)}
+              onPress={() => setSelectedCategory(item.strCategory)}
               sx={{
                 borderColor: isSelected ? '$black' : '$blueGray300',
                 backgroundColor: isSelected ? '$black' : 'transparent',
