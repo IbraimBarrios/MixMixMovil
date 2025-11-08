@@ -6,6 +6,7 @@ import type { category } from '../../types/category';
 import useGetData from '../../hooks/useGetData';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
 import RequestErrorMessage from '../../components/RequestErrorMessage';
+import SkeletonCategories from '../../Skeletons/SkeletonCategories';
 
 type CategoryResponse = {
   drinks: category[];
@@ -13,13 +14,15 @@ type CategoryResponse = {
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const { data, error, fetchData } = useGetData<CategoryResponse>();
+  const { data, error, isLoading, fetchData } = useGetData<CategoryResponse>();
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/list.php?c=list`);
   }, []);
 
   const categories = useMemo(() => data?.drinks || [], [data]);
+
+  if (isLoading) return <SkeletonCategories />;
 
   if (error)
     return <RequestErrorMessage text="Error al solicitar las categorias." />;
