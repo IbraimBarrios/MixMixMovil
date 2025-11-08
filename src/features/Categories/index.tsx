@@ -5,6 +5,7 @@ import { API_BASE_V1 } from '../../utils/constants';
 import type { category } from '../../types/category';
 import useGetData from '../../hooks/useGetData';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
+import RequestErrorMessage from '../../components/RequestErrorMessage';
 
 type CategoryResponse = {
   drinks: category[];
@@ -12,13 +13,16 @@ type CategoryResponse = {
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const { data, fetchData } = useGetData<CategoryResponse>();
+  const { data, error, fetchData } = useGetData<CategoryResponse>();
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/list.php?c=list`);
   }, []);
 
   const categories = useMemo(() => data?.drinks || [], [data]);
+
+  if (error)
+    return <RequestErrorMessage text="Error al solicitar las categorias." />;
 
   return (
     <>
