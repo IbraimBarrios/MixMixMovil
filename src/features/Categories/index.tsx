@@ -12,15 +12,31 @@ type CategoryResponse = {
   drinks: category[];
 };
 
-const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+type CategoriesProps = {
+  defaultCategorySelected?: string;
+  onCategory: (category: string) => void;
+};
+
+const Categories = ({
+  defaultCategorySelected = 'all',
+  onCategory,
+}: CategoriesProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    defaultCategorySelected,
+  );
   const { data, error, isLoading, fetchData } = useGetData<CategoryResponse>();
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/list.php?c=list`);
+    onCategory(defaultCategorySelected);
   }, []);
 
   const categories = useMemo(() => data?.drinks || [], [data]);
+
+  const handleSelectCategory = (category: string) => {
+    setSelectedCategory(category);
+    onCategory(category);
+  };
 
   if (isLoading) return <SkeletonCategories />;
 
@@ -47,7 +63,7 @@ const Categories = () => {
                   variant={isSelected ? 'solid' : 'outline'}
                   size="md"
                   borderRadius="$lg"
-                  onPress={() => setSelectedCategory(item.strCategory)}
+                  onPress={() => handleSelectCategory(item.strCategory)}
                   sx={{
                     borderColor: isSelected ? '$black' : '$blueGray300',
                     backgroundColor: isSelected ? '$black' : 'transparent',

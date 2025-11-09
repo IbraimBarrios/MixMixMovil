@@ -1,10 +1,5 @@
-import React from 'react';
-import {
-  Box,
-  Divider,
-  SafeAreaView,
-  VStack,
-} from '@gluestack-ui/themed';
+import React, { useState } from 'react';
+import { Box, Divider, SafeAreaView, VStack } from '@gluestack-ui/themed';
 import { ScrollView, StatusBar, useColorScheme } from 'react-native';
 import DrinkCard from '../../components/DrinkCard';
 import DrinkRandom from '../../features/DrinkRandom';
@@ -12,6 +7,11 @@ import Categories from '../../features/Categories';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [category, setCategory] = useState<string>('');
+
+  const handleSelectCategory = (categoryName: string) => {
+    setCategory(categoryName);
+  };
 
   return (
     <SafeAreaView
@@ -34,7 +34,7 @@ const HomeScreen = () => {
           <DrinkRandom />
           <Divider my="$4" />
           {/* Secction Categories */}
-          <Categories />
+          <Categories onCategory={handleSelectCategory} />
           {/* Secction Drinks */}
           <VStack space="md" mt="$4">
             <DrinkCard
