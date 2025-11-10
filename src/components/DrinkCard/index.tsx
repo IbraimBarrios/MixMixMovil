@@ -4,11 +4,12 @@ import CategoryTag from '../CategoryTag';
 import DrinkTypeLabel from '../DrinkTypeLabel';
 
 type DrinkCardProps = {
+  category: string;
   name: string;
   url: string;
 };
 
-const DrinkCard = ({ name, url }: DrinkCardProps) => {
+const DrinkCard = ({ category, name, url }: DrinkCardProps) => {
   return (
     <HStack
       space="md"
@@ -22,7 +23,7 @@ const DrinkCard = ({ name, url }: DrinkCardProps) => {
       <MiniatureDrinkImg url={url} />
       <VStack flex={1} space="md">
         <HStack justifyContent="space-between" alignItems="center">
-          <CategoryTag categoryName="Cocktail" />
+          <CategoryTag categoryName={category} />
           <Box mr="$2">
             <DrinkTypeLabel />
           </Box>

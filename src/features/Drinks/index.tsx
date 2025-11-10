@@ -29,7 +29,11 @@ const Drinks = ({ category }: DrinksProps) => {
     <FlatList
       data={drinks}
       renderItem={({ item }) => (
-        <DrinkCard name={item.strDrink} url={item.strDrinkThumb} />
+        <DrinkCard
+          category={category}
+          name={item.strDrink}
+          url={item.strDrinkThumb}
+        />
       )}
       keyExtractor={item => item.idDrink}
       ItemSeparatorComponent={Separator}
