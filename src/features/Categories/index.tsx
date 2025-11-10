@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { Button, ButtonText, HStack } from '@gluestack-ui/themed';
+import { Box, Button, ButtonText, HStack } from '@gluestack-ui/themed';
 import { API_BASE_V1 } from '../../utils/constants';
 import type { category } from '../../types/category';
 import useGetData from '../../hooks/useGetData';
@@ -44,7 +44,7 @@ const Categories = ({
     return <RequestErrorMessage text="Error al solicitar las categorias." />;
 
   return (
-    <>
+    <Box>
       {categories.length !== 0 ? (
         <ScrollView
           horizontal
@@ -91,7 +91,7 @@ const Categories = ({
       ) : (
         <EmptyResultMessage text="No se encontraron categorias" />
       )}
-    </>
+    </Box>
   );
 };
 
