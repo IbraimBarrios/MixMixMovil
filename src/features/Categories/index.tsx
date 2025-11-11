@@ -13,25 +13,25 @@ type CategoryResponse = {
 };
 
 type CategoriesProps = {
-  defaultCategorySelected: string;
   onCategory: (category: string) => void;
 };
 
-const Categories = ({
-  defaultCategorySelected,
-  onCategory,
-}: CategoriesProps) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    defaultCategorySelected,
-  );
+const Categories = ({ onCategory }: CategoriesProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('Beer');
   const { data, error, isLoading, fetchData } = useGetData<CategoryResponse>();
+
+  const categories = useMemo(() => data?.drinks || [], [data]);
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/list.php?c=list`);
-    onCategory(defaultCategorySelected);
+    onCategory(selectedCategory);
   }, []);
 
-  const categories = useMemo(() => data?.drinks || [], [data]);
+  useEffect(() => {
+    if (categories.length > 0) {
+      onCategory(selectedCategory);
+    }
+  }, [categories]);
 
   const handleSelectCategory = (category: string) => {
     setSelectedCategory(category);
@@ -45,7 +45,7 @@ const Categories = ({
 
   return (
     <Box>
-      {categories.length !== 0 ? (
+      {categories.length > 0 ? (
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
