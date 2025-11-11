@@ -13,12 +13,12 @@ type CategoryResponse = {
 };
 
 type CategoriesProps = {
-  defaultCategorySelected?: string;
+  defaultCategorySelected: string;
   onCategory: (category: string) => void;
 };
 
 const Categories = ({
-  defaultCategorySelected = 'all',
+  defaultCategorySelected,
   onCategory,
 }: CategoriesProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>(
@@ -52,10 +52,8 @@ const Categories = ({
           contentContainerStyle={styles.contentContainer}
         >
           <HStack space="md">
-            {[{ strCategory: 'all' }, ...categories].map((item, index) => {
+            {categories.map((item, index) => {
               const isSelected = selectedCategory === item.strCategory;
-              const categoryName =
-                item.strCategory === 'all' ? 'Todos' : item.strCategory;
 
               return (
                 <Button
@@ -81,7 +79,7 @@ const Categories = ({
                       },
                     }}
                   >
-                    {categoryName}
+                    {item.strCategory}
                   </ButtonText>
                 </Button>
               );
