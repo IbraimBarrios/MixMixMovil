@@ -1,7 +1,13 @@
-import { Box, HStack, Text, VStack } from '@gluestack-ui/themed';
+import {
+  Button,
+  ButtonIcon,
+  FavouriteIcon,
+  HStack,
+  Text,
+  VStack,
+} from '@gluestack-ui/themed';
 import MiniatureDrinkImg from '../MiniatureDrinkImg';
 import CategoryTag from '../CategoryTag';
-import DrinkTypeLabel from '../DrinkTypeLabel';
 
 type DrinkCardProps = {
   category: string;
@@ -21,22 +27,37 @@ const DrinkCard = ({ category, name, url }: DrinkCardProps) => {
       sx={{ _dark: { bg: '$warmGray800' } }}
     >
       <MiniatureDrinkImg url={url} />
-      <VStack flex={1} space="md">
-        <HStack justifyContent="space-between" alignItems="center">
+      <HStack
+        flex={1}
+        space="sm"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <VStack flex={1} space="sm">
+          <Text
+            bold
+            fontSize="$lg"
+            color="$black"
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            sx={{ _dark: { color: '$white' } }}
+          >
+            {name}
+          </Text>
           <CategoryTag categoryName={category} />
-          <Box mr="$2">
-            <DrinkTypeLabel />
-          </Box>
-        </HStack>
-        <Text
-          bold
-          fontSize="$lg"
-          color="$black"
-          sx={{ _dark: { color: '$white' } }}
+        </VStack>
+        <Button
+          size="md"
+          borderRadius="$full"
+          w="$10"
+          h="$10"
+          justifyContent="center"
+          alignItems="center"
+          backgroundColor="$black"
         >
-          {name}
-        </Text>
-      </VStack>
+          <ButtonIcon as={FavouriteIcon} />
+        </Button>
+      </HStack>
     </HStack>
   );
 };
