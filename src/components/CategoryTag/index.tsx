@@ -7,6 +7,7 @@ type CategoryTagProps = {
 const CategoryTag = ({ categoryName }: CategoryTagProps) => {
   return (
     <Box
+      alignSelf="flex-start"
       paddingVertical="$1"
       paddingHorizontal="$2"
       backgroundColor="#eaeaea"
