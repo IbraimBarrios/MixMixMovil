@@ -1,11 +1,4 @@
-import {
-  Button,
-  ButtonIcon,
-  FavouriteIcon,
-  HStack,
-  Text,
-  VStack,
-} from '@gluestack-ui/themed';
+import { HStack, Text, VStack } from '@gluestack-ui/themed';
 import MiniatureDrinkImg from '../MiniatureDrinkImg';
 import CategoryTag from '../CategoryTag';
 
@@ -27,12 +20,7 @@ const DrinkCard = ({ category, name, url }: DrinkCardProps) => {
       sx={{ _dark: { bg: '$warmGray800' } }}
     >
       <MiniatureDrinkImg url={url} />
-      <HStack
-        flex={1}
-        space="sm"
-        alignItems="center"
-        justifyContent="space-between"
-      >
+      <HStack flex={1} space="sm" alignItems="center">
         <VStack flex={1} space="sm">
           <Text
             bold
@@ -46,17 +34,6 @@ const DrinkCard = ({ category, name, url }: DrinkCardProps) => {
           </Text>
           <CategoryTag categoryName={category} />
         </VStack>
-        <Button
-          size="md"
-          borderRadius="$full"
-          w="$10"
-          h="$10"
-          justifyContent="center"
-          alignItems="center"
-          backgroundColor="$black"
-        >
-          <ButtonIcon as={FavouriteIcon} />
-        </Button>
       </HStack>
     </HStack>
   );
