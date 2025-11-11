@@ -73,6 +73,8 @@ const DrinkRandom = () => {
             size="md"
             lineHeight="$md"
             color="$black"
+            numberOfLines={3}
+            ellipsizeMode='tail'
             sx={{ _dark: { color: '$white' } }}
           >
             {drink.strInstructionsES}
