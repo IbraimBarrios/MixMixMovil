@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { Box } from '@gluestack-ui/themed';
+import { Box, Spinner } from '@gluestack-ui/themed';
 import { API_BASE_V1 } from '../../utils/constants';
 import { DrinkCategory } from '../../types/drink';
 import { FlatList } from 'react-native';
@@ -16,7 +16,7 @@ type DrinksProps = {
 };
 
 const Drinks = ({ category }: DrinksProps) => {
-  const { data, fetchData } = useGetData<DrinkResponse>();
+  const { data, isLoading, fetchData } = useGetData<DrinkResponse>();
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/filter.php?c=${encodeURIComponent(category)}`);
@@ -31,6 +31,8 @@ const Drinks = ({ category }: DrinksProps) => {
 
     return data?.drinks || [];
   }, [data]);
+
+  if (isLoading) return <Spinner size="large" color="grey" />;
 
   if (drinks.length === 0)
     return <EmptyResultMessage text="No se mostraron bebidas" />;
