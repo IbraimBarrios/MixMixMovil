@@ -1,10 +1,10 @@
 import { Box, Text } from '@gluestack-ui/themed';
 
 type CategoryTagProps = {
-  categoryName: string;
+  category: string;
 };
 
-const CategoryTag = ({ categoryName }: CategoryTagProps) => {
+const CategoryTag = ({ category }: CategoryTagProps) => {
   return (
     <Box
       alignSelf="flex-start"
@@ -14,7 +14,7 @@ const CategoryTag = ({ categoryName }: CategoryTagProps) => {
       borderRadius="$md"
     >
       <Text size="xs" color="$black">
-        {categoryName}
+        {category}
       </Text>
     </Box>
   );
