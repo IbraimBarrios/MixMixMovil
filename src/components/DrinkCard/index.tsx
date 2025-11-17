@@ -32,7 +32,7 @@ const DrinkCard = ({ category, name, url }: DrinkCardProps) => {
           >
             {name}
           </Text>
-          <CategoryTag categoryName={category} />
+          <CategoryTag category={category} />
         </VStack>
       </HStack>
     </HStack>

@@ -66,7 +66,7 @@ const DrinkRandom = () => {
           >
             {drink.strDrink}
           </Text>
-          <CategoryTag categoryName={drink.strCategory} />
+          <CategoryTag category={drink.strCategory} />
         </HStack>
         {drink.strInstructionsES ? (
           <Text
