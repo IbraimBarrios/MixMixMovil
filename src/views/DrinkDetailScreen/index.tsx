@@ -1,9 +1,18 @@
 import { Box, HStack, SafeAreaView, Text, VStack } from '@gluestack-ui/themed';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '../../types/rootParams';
 import DrinkImage from '../../components/DrinkImage';
 import CategoryTag from '../../components/CategoryTag';
 import DrinkTypeLabel from '../../components/DrinkTypeLabel';
 
+type DetailScreenRouteProp = RouteProp<RootStackParamList, 'DrinkDetail'>;
+
 const DrinkDetailScreen = () => {
+  const route = useRoute<DetailScreenRouteProp>();
+  const { drinkId } = route.params;
+
+  console.log(drinkId);
+
   return (
     <SafeAreaView
       flex={1}
