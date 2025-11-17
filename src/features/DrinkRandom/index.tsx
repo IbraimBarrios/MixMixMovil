@@ -74,14 +74,16 @@ const DrinkRandom = () => {
             lineHeight="$md"
             color="$black"
             numberOfLines={3}
-            ellipsizeMode='tail'
+            ellipsizeMode="tail"
             sx={{ _dark: { color: '$white' } }}
           >
             {drink.strInstructionsES}
           </Text>
         ) : null}
         <Button
-          onPress={() => navigation.navigate('Detail')}
+          onPress={() =>
+            navigation.navigate('Detail', { drinkId: drink.idDrink })
+          }
           backgroundColor="$black"
           sx={{ _dark: { backgroundColor: '$white' } }}
         >
