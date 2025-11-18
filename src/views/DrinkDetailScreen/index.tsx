@@ -16,7 +16,7 @@ const DrinkDetailScreen = () => {
       backgroundColor="$white"
       sx={{ _dark: { backgroundColor: '$backgroundDark950' } }}
     >
-      <ScrollView>
+      <ScrollView alwaysBounceVertical={false} overScrollMode="never">
         <Box padding="$3">
           <DrinkDetail id={drinkId} />
         </Box>
