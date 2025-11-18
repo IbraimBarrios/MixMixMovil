@@ -54,7 +54,11 @@ const DrinkDetail = ({ id }: DrinkDetailProps) => {
           >
             {drink.strInstructionsES}
           </Text>
-        ) : null}
+        ) : (
+          <Text color="$black" bold sx={{ _dark: { color: '$white' } }}>
+            Sin instruciones
+          </Text>
+        )}
         <HStack space="md">
           <Text color="$black" bold sx={{ _dark: { color: '$white' } }}>
             Vaso:
