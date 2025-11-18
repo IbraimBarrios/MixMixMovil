@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from 'react';
-import { ScrollView } from 'react-native';
 import { HStack, Text, VStack } from '@gluestack-ui/themed';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
@@ -30,36 +29,34 @@ const DrinkDetail = ({ id }: DrinkDetailProps) => {
   if (!drink) return <EmptyResultMessage text="No se encontro la bebida" />;
 
   return (
-    <ScrollView>
+    <VStack space="md">
+      <DrinkImage url={drink.strDrinkThumb} />
+      <HStack alignItems="center" justifyContent="space-between">
+        <CategoryTag category={drink.strCategory} />
+        <DrinkTypeLabel drinkType={drink.strAlcoholic} />
+      </HStack>
       <VStack space="md">
-        <DrinkImage url={drink.strDrinkThumb} />
-        <HStack alignItems="center" justifyContent="space-between">
-          <CategoryTag category={drink.strCategory} />
-          <DrinkTypeLabel drinkType={drink.strAlcoholic} />
-        </HStack>
-        <VStack space="md">
+        <Text
+          bold
+          size="2xl"
+          color="$black"
+          sx={{ _dark: { color: '$white' } }}
+        >
+          {drink.strDrink}
+        </Text>
+        <IngredientsList drink={drink} />
+        {drink.strInstructionsES ? (
           <Text
-            bold
-            size="2xl"
+            size="md"
+            lineHeight="$md"
             color="$black"
             sx={{ _dark: { color: '$white' } }}
           >
-            {drink.strDrink}
+            {drink.strInstructionsES}
           </Text>
-          <IngredientsList drink={drink} />
-          {drink.strInstructionsES ? (
-            <Text
-              size="md"
-              lineHeight="$md"
-              color="$black"
-              sx={{ _dark: { color: '$white' } }}
-            >
-              {drink.strInstructionsES}
-            </Text>
-          ) : null}
-        </VStack>
+        ) : null}
       </VStack>
-    </ScrollView>
+    </VStack>
   );
 };
 
