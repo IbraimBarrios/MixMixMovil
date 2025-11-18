@@ -55,6 +55,14 @@ const DrinkDetail = ({ id }: DrinkDetailProps) => {
             {drink.strInstructionsES}
           </Text>
         ) : null}
+        <HStack space="md">
+          <Text color="$black" bold sx={{ _dark: { color: '$white' } }}>
+            Vaso:
+          </Text>
+          <Text color="$black" sx={{ _dark: { color: '$white' } }}>
+            {drink.strGlass}
+          </Text>
+        </HStack>
       </VStack>
     </VStack>
   );
