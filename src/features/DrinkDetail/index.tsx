@@ -1,12 +1,13 @@
-import { HStack, Text, VStack } from '@gluestack-ui/themed';
-import DrinkImage from '../../components/DrinkImage';
-import CategoryTag from '../../components/CategoryTag';
-import DrinkTypeLabel from '../../components/DrinkTypeLabel';
-import useGetData from '../../hooks/useGetData';
 import { useEffect, useMemo } from 'react';
+import { HStack, Text, VStack } from '@gluestack-ui/themed';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
+import DrinkImage from '../../components/DrinkImage';
+import useGetData from '../../hooks/useGetData';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
+import CategoryTag from '../../components/CategoryTag';
+import DrinkTypeLabel from '../../components/DrinkTypeLabel';
+import IngredientsList from '../../components/IngredientsList';
 
 type DrinkResponse = {
   drinks: Drink[];
@@ -43,6 +44,7 @@ const DrinkDetail = ({ id }: DrinkDetailProps) => {
         >
           {drink.strDrink}
         </Text>
+        <IngredientsList drink={drink} />
         {drink.strInstructionsES ? (
           <Text
             size="md"

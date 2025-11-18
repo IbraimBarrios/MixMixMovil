@@ -1,3 +1,4 @@
+import { ScrollView } from 'react-native';
 import { Box, SafeAreaView } from '@gluestack-ui/themed';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../types/rootParams';
@@ -15,9 +16,11 @@ const DrinkDetailScreen = () => {
       backgroundColor="$white"
       sx={{ _dark: { backgroundColor: '$backgroundDark950' } }}
     >
-      <Box padding="$3">
-        <DrinkDetail id={drinkId} />
-      </Box>
+      <ScrollView>
+        <Box padding="$3">
+          <DrinkDetail id={drinkId} />
+        </Box>
+      </ScrollView>
     </SafeAreaView>
   );
 };
