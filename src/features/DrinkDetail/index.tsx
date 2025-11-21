@@ -8,6 +8,7 @@ import EmptyResultMessage from '../../components/EmptyResultMessage';
 import CategoryTag from '../../components/CategoryTag';
 import DrinkTypeLabel from '../../components/DrinkTypeLabel';
 import IngredientsList from '../../components/IngredientsList';
+import RequestErrorMessage from '../../components/RequestErrorMessage';
 
 type DrinkResponse = {
   drinks: Drink[];
@@ -18,13 +19,15 @@ type DrinkDetailProps = {
 };
 
 const DrinkDetail = ({ id }: DrinkDetailProps) => {
-  const { data, fetchData } = useGetData<DrinkResponse>();
+  const { data, error, fetchData } = useGetData<DrinkResponse>();
 
   const drink = useMemo(() => data?.drinks[0] || null, [data]);
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/lookup.php?i=${id}`);
   }, []);
+
+  if (error) return <RequestErrorMessage />;
 
   if (!drink) return <EmptyResultMessage text="No se encontro la bebida" />;
 
