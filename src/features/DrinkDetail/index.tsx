@@ -9,6 +9,7 @@ import CategoryTag from '../../components/CategoryTag';
 import DrinkTypeLabel from '../../components/DrinkTypeLabel';
 import IngredientsList from '../../components/IngredientsList';
 import RequestErrorMessage from '../../components/RequestErrorMessage';
+import SkeletonDrinkDetail from '../../Skeletons/SkeletonDrinkDetail';
 
 type DrinkResponse = {
   drinks: Drink[];
@@ -19,13 +20,15 @@ type DrinkDetailProps = {
 };
 
 const DrinkDetail = ({ id }: DrinkDetailProps) => {
-  const { data, error, fetchData } = useGetData<DrinkResponse>();
+  const { data, error, isLoading, fetchData } = useGetData<DrinkResponse>();
 
   const drink = useMemo(() => data?.drinks[0] || null, [data]);
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/lookup.php?i=${id}`);
   }, []);
+
+  if (isLoading) return <SkeletonDrinkDetail />;
 
   if (error) return <RequestErrorMessage />;
 
