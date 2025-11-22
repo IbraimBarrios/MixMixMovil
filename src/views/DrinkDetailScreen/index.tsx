@@ -4,7 +4,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../types/rootParams';
 import DrinkDetail from '../../features/DrinkDetail';
 
-type DetailScreenRouteProp = RouteProp<RootStackParamList, 'DrinkDetail'>;
+type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>;
 
 const DrinkDetailScreen = () => {
   const route = useRoute<DetailScreenRouteProp>();

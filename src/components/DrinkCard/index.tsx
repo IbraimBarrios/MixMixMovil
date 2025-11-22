@@ -3,6 +3,10 @@ import { useNavigation } from '@react-navigation/native';
 import { HStack, Text, VStack } from '@gluestack-ui/themed';
 import MiniatureDrinkImg from '../MiniatureDrinkImg';
 import CategoryTag from '../CategoryTag';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../types/rootParams';
+
+type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 type DrinkCardProps = {
   drinkId: string;
@@ -12,7 +16,7 @@ type DrinkCardProps = {
 };
 
 const DrinkCard = ({ drinkId, category, name, url }: DrinkCardProps) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<AppNavigationProp>();
 
   const handlePress = () => {
     navigation.navigate('Detail', { drinkId: drinkId });
