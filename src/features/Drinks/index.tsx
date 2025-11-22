@@ -42,6 +42,7 @@ const Drinks = ({ category }: DrinksProps) => {
       data={drinks}
       renderItem={({ item }) => (
         <DrinkCard
+          drinkId={item.idDrink}
           category={category}
           name={item.strDrink}
           url={item.strDrinkThumb}
