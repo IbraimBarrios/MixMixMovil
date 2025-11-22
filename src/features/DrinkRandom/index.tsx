@@ -1,4 +1,6 @@
 import { useEffect, useMemo } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {
   Box,
   Button,
@@ -9,13 +11,13 @@ import {
 } from '@gluestack-ui/themed';
 import DrinkImage from '../../components/DrinkImage';
 import CategoryTag from '../../components/CategoryTag';
-import { useNavigation } from '@react-navigation/native';
 import useGetData from '../../hooks/useGetData';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
 import SkeletonDrinkRandom from '../../Skeletons/SkeletonDrinkRandom';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
 import RequestErrorMessage from '../../components/RequestErrorMessage';
+import { RootStackParamList } from '../../types/rootParams';
 
 const renderCenteredBox = (children: React.ReactNode) => {
   return (
@@ -25,12 +27,14 @@ const renderCenteredBox = (children: React.ReactNode) => {
   );
 };
 
+type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 type DrinkResponse = {
   drinks: Drink[];
 };
 
 const DrinkRandom = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<AppNavigationProp>();
   const { data, error, isLoading, fetchData } = useGetData<DrinkResponse>();
 
   useEffect(() => {
