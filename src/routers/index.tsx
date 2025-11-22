@@ -1,25 +1,12 @@
-import * as React from 'react';
-import {
-  createStaticNavigation,
-  useNavigation,
-} from '@react-navigation/native';
+import { useColorScheme } from 'react-native';
+import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Button, Text, useColorScheme, View } from 'react-native';
 
 import HomeScreen from '../views/HomeScreen';
 import DrinkDetailScreen from '../views/DrinkDetailScreen';
+import FavoritesScreen from '../views/FavoritesScreen';
 import ITabBarIcon from '../components/TabBarIcon';
-
-function FavoritesScreen() {
-  const navigate = useNavigation();
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Favoritos</Text>
-      <Button title="Detalles" onPress={() => navigate.navigate('Detail')} />
-    </View>
-  );
-}
 
 const Routes = () => {
   const isDarkMode = useColorScheme() === 'dark';
