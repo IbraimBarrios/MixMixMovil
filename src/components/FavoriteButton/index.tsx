@@ -1,6 +1,17 @@
 import { Button, ButtonIcon, FavouriteIcon } from '@gluestack-ui/themed';
+import useFavoriteDrinks from '../../hooks/useFavoriteDrinks';
 
-const FavoriteButton = () => {
+type FavoriteButtonProps = {
+  idDrink: string;
+};
+
+const FavoriteButton = ({ idDrink }: FavoriteButtonProps) => {
+  const { isFavoriteDrink, toggleFavoriteDrink } = useFavoriteDrinks(idDrink);
+
+  const handleFavoritePress = () => {
+    toggleFavoriteDrink();
+  };
+
   return (
     <>
       <Button
@@ -11,8 +22,12 @@ const FavoriteButton = () => {
         justifyContent="center"
         alignItems="center"
         backgroundColor="$white"
+        onPress={handleFavoritePress}
       >
-        <ButtonIcon as={FavouriteIcon} color="$black" />
+        <ButtonIcon
+          as={FavouriteIcon}
+          color={isFavoriteDrink ? '$red500' : '$black'}
+        />
       </Button>
     </>
   );
