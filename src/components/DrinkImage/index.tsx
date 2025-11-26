@@ -1,4 +1,6 @@
+import { Box } from '@gluestack-ui/themed';
 import { Image, ImageStyle, StyleSheet } from 'react-native';
+import FavoriteButton from '../FavoriteButton';
 
 type DrinkImageProps = {
   url: string;
@@ -12,13 +14,18 @@ const DrinkImage = ({ url, variant = 'square' }: DrinkImageProps) => {
   };
 
   return (
-    <Image
-      alt="drink"
-      style={[styles.image, variantStyle[variant]]}
-      source={{
-        uri: url,
-      }}
-    />
+    <Box position="relative">
+      <Box position="absolute" zIndex={10} top="$2" right="$2">
+        <FavoriteButton />
+      </Box>
+      <Image
+        alt="drink"
+        style={[styles.image, variantStyle[variant]]}
+        source={{
+          uri: url,
+        }}
+      />
+    </Box>
   );
 };
 

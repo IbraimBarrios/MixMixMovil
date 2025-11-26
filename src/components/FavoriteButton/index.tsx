@@ -10,9 +10,9 @@ const FavoriteButton = () => {
         h="$10"
         justifyContent="center"
         alignItems="center"
-        backgroundColor="$black"
+        backgroundColor="$white"
       >
-        <ButtonIcon as={FavouriteIcon} />
+        <ButtonIcon as={FavouriteIcon} color="$black" />
       </Button>
     </>
   );
