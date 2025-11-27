@@ -1,4 +1,5 @@
-import { Button, ButtonIcon, FavouriteIcon } from '@gluestack-ui/themed';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import useFavoriteDrinks from '../../hooks/useFavoriteDrinks';
 
 type FavoriteButtonProps = {
@@ -6,7 +7,8 @@ type FavoriteButtonProps = {
 };
 
 const FavoriteButton = ({ idDrink }: FavoriteButtonProps) => {
-  const { isFavoriteDrink, toggleFavoriteDrink } = useFavoriteDrinks(idDrink);
+  const { isFavoriteDrink: isFavorite, toggleFavoriteDrink } =
+    useFavoriteDrinks(idDrink);
 
   const handleFavoritePress = () => {
     toggleFavoriteDrink();
@@ -14,23 +16,31 @@ const FavoriteButton = ({ idDrink }: FavoriteButtonProps) => {
 
   return (
     <>
-      <Button
-        size="md"
-        borderRadius="$full"
-        w="$10"
-        h="$10"
-        justifyContent="center"
-        alignItems="center"
-        backgroundColor="$white"
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
         onPress={handleFavoritePress}
       >
-        <ButtonIcon
-          as={FavouriteIcon}
-          color={isFavoriteDrink ? '$red500' : '$black'}
+        <Icon
+          name="heart"
+          solid={isFavorite}
+          size={18}
+          color={isFavorite ? 'red' : 'black'}
         />
-      </Button>
+      </TouchableOpacity>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    width: 40,
+    height: 40,
+    borderRadius: 9999,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default FavoriteButton;
