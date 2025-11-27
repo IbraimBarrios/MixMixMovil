@@ -59,7 +59,11 @@ const DrinkRandom = () => {
 
   return (
     <VStack space="md">
-      <DrinkImage url={drink.strDrinkThumb} variant="wide" />
+      <DrinkImage
+        idDrink={drink.idDrink}
+        url={drink.strDrinkThumb}
+        variant="wide"
+      />
       <VStack space="md">
         <HStack justifyContent="space-between" alignItems="center">
           <Text

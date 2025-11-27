@@ -36,7 +36,7 @@ const DrinkDetail = ({ id }: DrinkDetailProps) => {
 
   return (
     <VStack space="md">
-      <DrinkImage url={drink.strDrinkThumb} />
+      <DrinkImage idDrink={drink.idDrink} url={drink.strDrinkThumb} />
       <HStack alignItems="center" justifyContent="space-between">
         <CategoryTag category={drink.strCategory} />
         <DrinkTypeLabel drinkType={drink.strAlcoholic} />
