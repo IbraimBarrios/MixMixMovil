@@ -18,7 +18,7 @@ const FavoriteButton = ({ idDrink }: FavoriteButtonProps) => {
     <>
       <TouchableOpacity
         style={styles.button}
-        activeOpacity={0.7}
+        activeOpacity={0.5}
         onPress={handleFavoritePress}
       >
         <Icon
