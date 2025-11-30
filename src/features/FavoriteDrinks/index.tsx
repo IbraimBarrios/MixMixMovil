@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Box } from '@gluestack-ui/themed';
+import { Box, Spinner } from '@gluestack-ui/themed';
 import { getFavorites } from '../../utils/utils';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
@@ -47,9 +47,12 @@ const FavoriteDrinks = () => {
     fetchFavorites();
   }, []);
 
-  if(error) return <RequestErrorMessage />
+  if (loading) return <Spinner size="large" color="grey" />;
 
-  if (drinks.length === 0 ) return <EmptyResultMessage text='Sin bebidas favoritas' />
+  if (error) return <RequestErrorMessage />;
+
+  if (drinks.length === 0)
+    return <EmptyResultMessage text="Sin bebidas favoritas" />;
 
   return (
     <FlatList
