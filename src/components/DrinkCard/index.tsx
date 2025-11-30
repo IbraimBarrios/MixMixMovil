@@ -1,10 +1,11 @@
 import { Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { HStack, Text, VStack } from '@gluestack-ui/themed';
+import { Box, HStack, Text, VStack } from '@gluestack-ui/themed';
 import MiniatureDrinkImg from '../MiniatureDrinkImg';
 import CategoryTag from '../CategoryTag';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/rootParams';
+import FavoriteButton from '../FavoriteButton';
 
 type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -48,6 +49,9 @@ const DrinkCard = ({ drinkId, category, name, url }: DrinkCardProps) => {
             </Text>
             <CategoryTag category={category} />
           </VStack>
+          <Box marginRight="$2">
+            <FavoriteButton idDrink={drinkId} />
+          </Box>
         </HStack>
       </HStack>
     </Pressable>
