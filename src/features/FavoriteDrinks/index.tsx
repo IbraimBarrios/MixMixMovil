@@ -1,0 +1,49 @@
+import { Text } from '@gluestack-ui/themed';
+import { useEffect, useState } from 'react';
+import { getFavorites } from '../../utils/utils';
+import { API_BASE_V1 } from '../../utils/constants';
+import { Drink } from '../../types/drink';
+
+const FavoriteDrinks = () => {
+  const [drinks, setDrinks] = useState<Drink[]>([]);
+  const [loading, setLoading] = useState<Boolean>(true);
+  const [error, setError] = useState<Error | unknown>();
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      const favoriteIds: string[] = await getFavorites();
+
+      if (favoriteIds.length === 0) {
+        setDrinks([]);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const responses = await Promise.all(
+          favoriteIds.map((id: string) =>
+            fetch(`${API_BASE_V1}/lookup.php?i=${id}`).then(res => res.json()),
+          ),
+        );
+
+        const allDrinks = responses
+          .map(data => data.drinks?.[0])
+          .filter(Boolean);
+
+        setDrinks(allDrinks);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFavorites();
+  }, []);
+
+  console.log(drinks);
+
+  return <Text color="$red500">Favorites</Text>;
+};
+
+export default FavoriteDrinks;

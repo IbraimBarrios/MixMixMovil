@@ -1,10 +1,26 @@
-import { Text, View } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
+import { Box, SafeAreaView } from '@gluestack-ui/themed';
+import FavoriteDrinks from '../../features/FavoriteDrinks';
 
 const FavoritesScreen = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Favoritos</Text>
-    </View>
+    <SafeAreaView
+      flex={1}
+      backgroundColor="$white"
+      sx={{ _dark: { backgroundColor: '$backgroundDark950' } }}
+    >
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Box
+        flex={1}
+        padding="$3"
+        backgroundColor="$white"
+        sx={{ _dark: { backgroundColor: '$backgroundDark950' } }}
+      >
+        <FavoriteDrinks />
+      </Box>
+    </SafeAreaView>
   );
 };
 
