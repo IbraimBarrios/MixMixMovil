@@ -1,13 +1,17 @@
-import { Text } from '@gluestack-ui/themed';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
+import { Box } from '@gluestack-ui/themed';
 import { getFavorites } from '../../utils/utils';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
+import DrinkCard from '../../components/DrinkCard';
 
 const FavoriteDrinks = () => {
   const [drinks, setDrinks] = useState<Drink[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
   const [error, setError] = useState<Error | unknown>();
+
+  const Separator = useCallback(() => <Box height="$4" />, []);
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -41,9 +45,21 @@ const FavoriteDrinks = () => {
     fetchFavorites();
   }, []);
 
-  console.log(drinks);
-
-  return <Text color="$red500">Favorites</Text>;
+  return (
+    <FlatList
+      data={drinks}
+      renderItem={({ item }) => (
+        <DrinkCard
+          drinkId={item.idDrink}
+          name={item.strDrink}
+          category={item.strCategory}
+          url={item.strDrinkThumb}
+        />
+      )}
+      keyExtractor={item => item.idDrink}
+      ItemSeparatorComponent={Separator}
+    />
+  );
 };
 
 export default FavoriteDrinks;
