@@ -15,3 +15,12 @@ export const getFavorites = async () => {
 
   return storage ? JSON.parse(storage) : [];
 };
+
+export const clearAllStorage = async () => {
+  try {
+    await AsyncStorage.clear();
+    console.log('¡AsyncStorage completamente limpiado!');
+  } catch (e) {
+    console.error('Error al limpiar AsyncStorage:', e);
+  }
+};
