@@ -5,6 +5,7 @@ import { getFavorites } from '../../utils/utils';
 import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
 import DrinkCard from '../../components/DrinkCard';
+import EmptyResultMessage from '../../components/EmptyResultMessage';
 
 const FavoriteDrinks = () => {
   const [drinks, setDrinks] = useState<Drink[]>([]);
@@ -44,6 +45,8 @@ const FavoriteDrinks = () => {
 
     fetchFavorites();
   }, []);
+
+  if (drinks.length === 0 ) return <EmptyResultMessage text='Sin bebidas favoritas' />
 
   return (
     <FlatList
