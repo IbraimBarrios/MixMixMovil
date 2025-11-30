@@ -6,6 +6,7 @@ import { API_BASE_V1 } from '../../utils/constants';
 import { Drink } from '../../types/drink';
 import DrinkCard from '../../components/DrinkCard';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
+import RequestErrorMessage from '../../components/RequestErrorMessage';
 
 const FavoriteDrinks = () => {
   const [drinks, setDrinks] = useState<Drink[]>([]);
@@ -45,6 +46,8 @@ const FavoriteDrinks = () => {
 
     fetchFavorites();
   }, []);
+
+  if(error) return <RequestErrorMessage />
 
   if (drinks.length === 0 ) return <EmptyResultMessage text='Sin bebidas favoritas' />
 
