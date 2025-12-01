@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { FlatList } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { Box, Spinner } from '@gluestack-ui/themed';
 import { getFavorites } from '../../utils/utils';
 import { API_BASE_V1 } from '../../utils/constants';
@@ -15,37 +16,41 @@ const FavoriteDrinks = () => {
 
   const Separator = useCallback(() => <Box height="$4" />, []);
 
-  useEffect(() => {
-    const fetchFavorites = async () => {
-      const favoriteIds: string[] = await getFavorites();
+  useFocusEffect(
+    useCallback(() => {
+      const fetchFavorites = async () => {
+        const favoriteIds: string[] = await getFavorites();
 
-      if (favoriteIds.length === 0) {
-        setDrinks([]);
-        setLoading(false);
-        return;
-      }
+        if (favoriteIds.length === 0) {
+          setDrinks([]);
+          setLoading(false);
+          return;
+        }
 
-      try {
-        const responses = await Promise.all(
-          favoriteIds.map((id: string) =>
-            fetch(`${API_BASE_V1}/lookup.php?i=${id}`).then(res => res.json()),
-          ),
-        );
+        try {
+          const responses = await Promise.all(
+            favoriteIds.map((id: string) =>
+              fetch(`${API_BASE_V1}/lookup.php?i=${id}`).then(res =>
+                res.json(),
+              ),
+            ),
+          );
 
-        const allDrinks = responses
-          .map(data => data.drinks?.[0])
-          .filter(Boolean);
+          const allDrinks = responses
+            .map(data => data.drinks?.[0])
+            .filter(Boolean);
 
-        setDrinks(allDrinks);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+          setDrinks(allDrinks);
+        } catch (error) {
+          setError(error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    fetchFavorites();
-  }, []);
+      fetchFavorites();
+    }, []),
+  );
 
   if (loading) return <Spinner size="large" color="grey" />;
 
