@@ -60,12 +60,7 @@ const FavoriteDrinks = () => {
     }, []),
   );
 
-  if (loading)
-    return (
-      <Box flex={1} alignItems="center" justifyContent="center">
-        <Spinner size="large" color="grey" />
-      </Box>
-    );
+  if (loading) return renderContentBox(<Spinner size="large" color="grey" />);
 
   if (error) return <RequestErrorMessage />;
 
