@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FlatList } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Box, Spinner } from '@gluestack-ui/themed';
@@ -8,6 +8,14 @@ import { Drink } from '../../types/drink';
 import DrinkCard from '../../components/DrinkCard';
 import EmptyResultMessage from '../../components/EmptyResultMessage';
 import RequestErrorMessage from '../../components/RequestErrorMessage';
+
+const renderContentBox = (children: React.ReactNode) => {
+  return (
+    <Box flex={1} alignItems="center" justifyContent="center">
+      {children}
+    </Box>
+  );
+};
 
 const FavoriteDrinks = () => {
   const [drinks, setDrinks] = useState<Drink[]>([]);
@@ -52,17 +60,15 @@ const FavoriteDrinks = () => {
     }, []),
   );
 
-  if (loading)
-    return (
-      <Box flex={1} alignItems="center" justifyContent="center">
-        <Spinner size="large" color="grey" />
-      </Box>
-    );
+  if (loading) return renderContentBox(<Spinner size="large" color="grey" />);
 
   if (error) return <RequestErrorMessage />;
 
-  if (drinks.length === 0)
-    return <EmptyResultMessage text="Sin bebidas favoritas" />;
+  if (drinks.length === 0) {
+    return renderContentBox(
+      <EmptyResultMessage text="Sin bebidas favoritas" />,
+    );
+  }
 
   return (
     <FlatList
