@@ -7,6 +7,7 @@ import HomeScreen from '../views/HomeScreen';
 import DrinkDetailScreen from '../views/DrinkDetailScreen';
 import FavoritesScreen from '../views/FavoritesScreen';
 import ITabBarIcon from '../components/TabBarIcon';
+import SearchScreen from '../views/SearchScreen';
 
 const Routes = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,6 +32,13 @@ const Routes = () => {
         options: {
           tabBarLabel: 'Favoritos',
           tabBarIcon: ITabBarIcon('heart'),
+        },
+      },
+      Search: {
+        screen: SearchScreen,
+        options: {
+          tabBarLabel: 'Buscar',
+          tabBarIcon: ITabBarIcon('magnify'),
         },
       },
     },
