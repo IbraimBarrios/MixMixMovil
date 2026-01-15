@@ -1,19 +1,39 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Box, SafeAreaView, Text, VStack } from '@gluestack-ui/themed';
+import { StatusBar, useColorScheme } from 'react-native';
+import SearchInput from '../../features/Search/SearchInput';
 
 const SearchScreen = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+  const [search, setSearch] = useState<string>('');
+
   return (
-    <View style={styles.content}>
-      <Text>Search Screen</Text>
-    </View>
+    <SafeAreaView
+      flex={1}
+      backgroundColor="$white"
+      sx={{ _dark: { backgroundColor: '$backgroundDark900' } }}
+    >
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Box
+        flex={1}
+        backgroundColor="$white"
+        padding="$3"
+        sx={{ _dark: { backgroundColor: '$backgroundDark900' } }}
+      >
+        <VStack space="md">
+          <Text
+            size="xl"
+            bold
+            color="$black"
+            sx={{ _dark: { color: '$white' } }}
+          >
+            Buscar
+          </Text>
+          <SearchInput value={search} onChange={setSearch} />
+        </VStack>
+      </Box>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default SearchScreen;
