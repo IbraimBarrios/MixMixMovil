@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Box, SafeAreaView, Text, VStack } from '@gluestack-ui/themed';
 import { StatusBar, useColorScheme } from 'react-native';
 import SearchInput from '../../features/Search/SearchInput';
+import SearchResults from '../../features/Search/SearchResults';
+import SearchDiscover from '../../features/Search/SearchDiscover';
 
 const SearchScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,6 +32,7 @@ const SearchScreen = () => {
             Buscar
           </Text>
           <SearchInput value={search} onChange={setSearch} />
+          {search.length > 0 ? <SearchResults /> : <SearchDiscover />}
         </VStack>
       </Box>
     </SafeAreaView>
