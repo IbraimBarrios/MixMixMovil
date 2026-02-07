@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, SafeAreaView, Text, VStack } from '@gluestack-ui/themed';
+import { Box, SafeAreaView, Text } from '@gluestack-ui/themed';
 import { StatusBar, useColorScheme } from 'react-native';
 import SearchInput from '../../features/Search/SearchInput';
 import SearchResults from '../../features/Search/SearchResults';
@@ -20,20 +20,14 @@ const SearchScreen = () => {
         flex={1}
         backgroundColor="$white"
         padding="$3"
+        rowGap="$3"
         sx={{ _dark: { backgroundColor: '$backgroundDark900' } }}
       >
-        <VStack space="md">
-          <Text
-            size="xl"
-            bold
-            color="$black"
-            sx={{ _dark: { color: '$white' } }}
-          >
-            Buscar
-          </Text>
-          <SearchInput value={search} onChange={setSearch} />
-          {search.length > 0 ? <SearchResults /> : <SearchDiscover />}
-        </VStack>
+        <Text size="xl" bold color="$black" sx={{ _dark: { color: '$white' } }}>
+          Buscar
+        </Text>
+        <SearchInput value={search} onChange={setSearch} />
+        {search.length > 0 ? <SearchResults /> : <SearchDiscover />}
       </Box>
     </SafeAreaView>
   );
