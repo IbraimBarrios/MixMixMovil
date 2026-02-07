@@ -1,12 +1,17 @@
-import { Box, Text } from '@gluestack-ui/themed';
+import { Text, VStack } from '@gluestack-ui/themed';
+import CategoryCard from '../../components/CategoryCard';
 
 const SearchDiscover = () => {
   return (
-    <Box>
+    <VStack space="md">
       <Text size="md" bold color="$black" sx={{ _dark: { color: '$white' } }}>
-        Categorias
+        Categorías
       </Text>
-    </Box>
+      <CategoryCard
+        name="Beer"
+        url="https://mixmix-vert.vercel.app/assets/beer-Da9jXoFu.png"
+      />
+    </VStack>
   );
 };
 
