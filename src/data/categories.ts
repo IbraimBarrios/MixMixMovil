@@ -26,6 +26,7 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Coffee / Tea',
+      image: require('../assets/coffee-tea.png'),
     },
     {
       name: 'Homemade Liqueur',
