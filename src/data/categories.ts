@@ -19,6 +19,7 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Cocoa',
+      image: require('../assets/cocoa.png'),
     },
     {
       name: 'Shot',
