@@ -1,15 +1,15 @@
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, ImageSourcePropType } from 'react-native';
 import { Box, Text } from '@gluestack-ui/themed';
 
 type CategoryCardProps = {
   name: string;
-  url: string;
+  image: ImageSourcePropType;
 };
 
-const CategoryCard = ({ name, url }: CategoryCardProps) => {
+const CategoryCard = ({ name, image }: CategoryCardProps) => {
   return (
-    <Box position="relative">
-      <Box position="absolute" zIndex={10} top="$4" left="$4">
+    <Box position="relative" flex={1}>
+      <Box position="absolute" zIndex={10} top="$2" left="$4">
         <Text
           color="$black"
           fontSize="$md"
@@ -19,13 +19,7 @@ const CategoryCard = ({ name, url }: CategoryCardProps) => {
           {name}
         </Text>
       </Box>
-      <Image
-        alt="category"
-        style={styles.image}
-        source={{
-          uri: url,
-        }}
-      />
+      <Image alt="category" style={styles.image} source={image} />
     </Box>
   );
 };
@@ -33,8 +27,8 @@ const CategoryCard = ({ name, url }: CategoryCardProps) => {
 const styles = StyleSheet.create({
   image: {
     width: '100%',
-    aspectRatio: 1.6,
-    borderRadius: 16,
+    height: 110,
+    borderRadius: 8,
   },
 });
 
