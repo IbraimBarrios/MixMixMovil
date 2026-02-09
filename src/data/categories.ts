@@ -10,9 +10,11 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Punch / Party Drink',
+      image: require('../assets/punch.png'),
     },
     {
       name: 'Shake',
+      image: require('../assets/shake.png'),
     },
     {
       name: 'Other / Unknown',
