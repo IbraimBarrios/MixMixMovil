@@ -6,6 +6,7 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Ordinary Drink',
+      image: require('../assets/ordinary-drink.png'),
     },
     {
       name: 'Punch / Party Drink',
@@ -23,6 +24,7 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Shot',
+      image: require('../assets/shot.png'),
     },
     {
       name: 'Coffee / Tea',
