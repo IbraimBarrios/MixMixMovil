@@ -30,6 +30,7 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Homemade Liqueur',
+      image: require('../assets/homemade-liqueur.png'),
     },
     {
       name: 'Beer',
