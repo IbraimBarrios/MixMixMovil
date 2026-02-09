@@ -42,6 +42,7 @@ export const All_CATEGORIES = {
     },
     {
       name: 'Soft Drink',
+      image: require('../assets/soft-drink.png'),
     },
   ],
 };
