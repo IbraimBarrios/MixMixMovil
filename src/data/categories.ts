@@ -2,6 +2,7 @@ export const All_CATEGORIES = {
   categories: [
     {
       name: 'Cocktail',
+      image: require('../assets/cocktail.png'),
     },
     {
       name: 'Ordinary Drink',
