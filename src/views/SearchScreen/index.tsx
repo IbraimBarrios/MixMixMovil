@@ -27,7 +27,11 @@ const SearchScreen = () => {
           Buscar
         </Text>
         <SearchInput value={search} onChange={setSearch} />
-        {search.length > 0 ? <SearchResults /> : <SearchDiscover />}
+        {search.length > 2 ? (
+          <SearchResults search={search} />
+        ) : (
+          <SearchDiscover />
+        )}
       </Box>
     </SafeAreaView>
   );
