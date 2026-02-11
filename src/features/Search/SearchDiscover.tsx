@@ -36,23 +36,23 @@ const SearchDiscover = () => {
   }, [allCategories]);
 
   return (
-    <FlatList
-      data={resolvedCategories}
-      numColumns={2}
-      columnWrapperStyle={styles.columnWrapper}
-      contentContainerStyle={styles.contentContainer}
-      ListHeaderComponent={
-        <Text size="lg" bold color="$black" sx={{ _dark: { color: '$white' } }}>
-          Categorías
-        </Text>
-      }
-      renderItem={({ item }) => (
-        <Box w="48%">
-          <CategoryCard name={item.strCategory} image={item.image} />
-        </Box>
-      )}
-      keyExtractor={item => item.strCategory}
-    />
+    <>
+      <Text size="lg" bold color="$black" sx={{ _dark: { color: '$white' } }}>
+        Categorías
+      </Text>
+      <FlatList
+        data={resolvedCategories}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.contentContainer}
+        renderItem={({ item }) => (
+          <Box w="48%">
+            <CategoryCard name={item.strCategory} image={item.image} />
+          </Box>
+        )}
+        keyExtractor={item => item.strCategory}
+      />
+    </>
   );
 };
 
