@@ -8,6 +8,7 @@ import DrinkDetailScreen from '../views/DrinkDetailScreen';
 import FavoritesScreen from '../views/FavoritesScreen';
 import ITabBarIcon from '../components/TabBarIcon';
 import SearchScreen from '../views/SearchScreen';
+import CategoryScreen from '../views/CategoryScreen';
 
 const Routes = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -61,6 +62,20 @@ const Routes = () => {
           headerShown: true,
           headerShadowVisible: false,
           headerBackButtonDisplayMode: 'minimal',
+          title: '',
+          headerStyle: {
+            backgroundColor: isDarkMode ? '$backgroundDark950' : '$white',
+          },
+          headerTintColor: isDarkMode ? '#fff' : '#000',
+        },
+      },
+      Category: {
+        screen: CategoryScreen,
+        options: {
+          headerShown: true,
+          headerShadowVisible: false,
+          headerBackButtonDisplayMode: 'minimal',
+          headerBackButtonMenuEnabled: true,
           title: '',
           headerStyle: {
             backgroundColor: isDarkMode ? '$backgroundDark950' : '$white',

@@ -1,5 +1,15 @@
-import { Image, StyleSheet, ImageSourcePropType } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  ImageSourcePropType,
+  Pressable,
+} from 'react-native';
 import { Box, Text } from '@gluestack-ui/themed';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../types/rootParams';
+
+type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 type CategoryCardProps = {
   name: string;
@@ -7,20 +17,28 @@ type CategoryCardProps = {
 };
 
 const CategoryCard = ({ name, image }: CategoryCardProps) => {
+  const navigation = useNavigation<AppNavigationProp>();
+
+  const handlePress = () => {
+    navigation.navigate('Category', { category: name });
+  };
+
   return (
-    <Box position="relative" flex={1}>
-      <Box position="absolute" zIndex={10} top="$2" left="$4">
-        <Text
-          color="$black"
-          fontSize="$md"
-          bold
-          sx={{ _dark: { color: '$white' } }}
-        >
-          {name}
-        </Text>
+    <Pressable onPress={handlePress}>
+      <Box position="relative" flex={1}>
+        <Box position="absolute" zIndex={10} top="$2" left="$4">
+          <Text
+            color="$black"
+            fontSize="$md"
+            bold
+            sx={{ _dark: { color: '$white' } }}
+          >
+            {name}
+          </Text>
+        </Box>
+        <Image alt="category" style={styles.image} source={image} />
       </Box>
-      <Image alt="category" style={styles.image} source={image} />
-    </Box>
+    </Pressable>
   );
 };
 
