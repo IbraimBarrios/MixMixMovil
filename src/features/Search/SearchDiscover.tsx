@@ -6,13 +6,14 @@ import { API_BASE_V1 } from '../../utils/constants';
 import { All_CATEGORIES } from '../../data/categories';
 import useGetData from '../../hooks/useGetData';
 import CategoryCard from '../../components/CategoryCard';
+import SkeletonCategoryCard from '../../Skeletons/SkeletonCategoryCard';
 
 type CategoryResponse = {
   drinks: category[];
 };
 
 const SearchDiscover = () => {
-  const { data, fetchData } = useGetData<CategoryResponse>();
+  const { data, isLoading, fetchData } = useGetData<CategoryResponse>();
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/list.php?c=list`);
@@ -34,6 +35,8 @@ const SearchDiscover = () => {
 
     return categories;
   }, [allCategories]);
+
+  if(isLoading) return <SkeletonCategoryCard />
 
   return (
     <>
