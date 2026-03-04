@@ -7,6 +7,7 @@ import { All_CATEGORIES } from '../../data/categories';
 import useGetData from '../../hooks/useGetData';
 import CategoryCard from '../../components/CategoryCard';
 import SkeletonCategoryCard from '../../Skeletons/SkeletonCategoryCard';
+import EmptyResultMessage from '../../components/EmptyResultMessage';
 
 type CategoryResponse = {
   drinks: category[];
@@ -36,25 +37,29 @@ const SearchDiscover = () => {
     return categories;
   }, [allCategories]);
 
-  if(isLoading) return <SkeletonCategoryCard />
+  if (isLoading) return <SkeletonCategoryCard />;
 
   return (
     <>
       <Text size="lg" bold color="$black" sx={{ _dark: { color: '$white' } }}>
         Categorías
       </Text>
-      <FlatList
-        data={resolvedCategories}
-        numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
-        contentContainerStyle={styles.contentContainer}
-        renderItem={({ item }) => (
-          <Box w="48%">
-            <CategoryCard name={item.strCategory} image={item.image} />
-          </Box>
-        )}
-        keyExtractor={item => item.strCategory}
-      />
+      {resolvedCategories.length > 0 ? (
+        <FlatList
+          data={resolvedCategories}
+          numColumns={2}
+          columnWrapperStyle={styles.columnWrapper}
+          contentContainerStyle={styles.contentContainer}
+          renderItem={({ item }) => (
+            <Box w="48%">
+              <CategoryCard name={item.strCategory} image={item.image} />
+            </Box>
+          )}
+          keyExtractor={item => item.strCategory}
+        />
+      ) : (
+        <EmptyResultMessage text="No se mostraron categorías" />
+      )}
     </>
   );
 };
