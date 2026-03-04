@@ -1,5 +1,5 @@
 import { StatusBar, useColorScheme } from 'react-native';
-import { Box, SafeAreaView } from '@gluestack-ui/themed';
+import { Box, SafeAreaView, Text } from '@gluestack-ui/themed';
 import FavoriteDrinks from '../../features/FavoriteDrinks';
 
 const FavoritesScreen = () => {
@@ -15,9 +15,13 @@ const FavoritesScreen = () => {
       <Box
         flex={1}
         padding="$3"
+        rowGap="$3"
         backgroundColor="$white"
         sx={{ _dark: { backgroundColor: '$backgroundDark950' } }}
       >
+        <Text size="xl" bold color="$black" sx={{ _dark: { color: '$white' } }}>
+          Favoritos
+        </Text>
         <FavoriteDrinks />
       </Box>
     </SafeAreaView>
