@@ -15,7 +15,6 @@ class MainActivity : ReactActivity() {
   override fun getMainComponentName(): String = "MixMixMovil"
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    setTheme(R.style.AppTheme)
     super.onCreate(savedInstanceState)
   }
 

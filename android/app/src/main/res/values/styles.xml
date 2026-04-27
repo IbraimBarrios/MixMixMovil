@@ -1,7 +1,15 @@
 <resources>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/launch_screen</item>
+    <!-- Splash moderno -->
+    <style name="SplashTheme" parent="Theme.SplashScreen">
+        <!-- color de fondo -->
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
+
+        <!-- icono que se muestra -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+
+        <!-- tema después del splash -->
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 
     <!-- Base application theme. -->
