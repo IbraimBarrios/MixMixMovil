@@ -1,0 +1,15 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- fondo -->
+    <item android:drawable="@android:color/white" />
+
+    <!-- contenido centrado -->
+    <item
+        android:gravity="center">
+
+        <bitmap
+            android:src="@drawable/splash_light"
+            android:gravity="center" />
+    </item>
+
+</layer-list>
